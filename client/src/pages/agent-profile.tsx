@@ -4,8 +4,10 @@ import { useParams } from '@pankod/refine-react-router-v6';
 import { Profile } from 'components';
 
 const AgentProfile = () => {
+  // Extracting the id parameter from the URL
   const { id } = useParams();
 
+  // Fetching the agent's profile data
   const { data, isLoading, isError } = useOne({
     resource: 'users',
     id: id as string,
@@ -22,6 +24,7 @@ const AgentProfile = () => {
   }
 
   return (
+    // Rendering the agent's profile
     <Profile
       type="Agent"
       name={agentProfile?.name}
