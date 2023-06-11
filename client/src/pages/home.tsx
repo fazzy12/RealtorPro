@@ -10,6 +10,7 @@ import {
 } from 'components';
 
 const Home = () => {
+  // Fetching list of properties
   const { data, isLoading, isError } = useList({
     resource: 'properties',
     config: {
@@ -31,8 +32,12 @@ const Home = () => {
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142D">Dashboard</Typography>
+      {/* Dashboard title */}
+      <Typography fontSize={25} fontWeight={700} color="#11142D">
+        Dashboard
+      </Typography>
 
+      {/* Pie charts section */}
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
           title="Properties for Sale"
@@ -60,11 +65,18 @@ const Home = () => {
         />
       </Box>
 
-      <Stack mt="25px" width="100%" direction={{ xs: 'column', lg: 'row' }} gap={4}>
+      {/* Total Revenue and Property Referrals */}
+      <Stack
+        mt="25px"
+        width="100%"
+        direction={{ xs: 'column', lg: 'row' }}
+        gap={4}
+      >
         <TotalRevenue />
         <PropertyReferrals />
       </Stack>
 
+      {/* Top Agent and Latest Properties */}
       <Stack mt="25px" width="100%" flexWrap="wrap" direction="row" gap={4}>
         <TopAgent />
 
@@ -77,9 +89,13 @@ const Home = () => {
           flexDirection="column"
           minWidth={{ xs: '100%', sm: 450 }}
         >
-          <Typography fontSize={18} fontWeight={600} color="#11142D">Latest Properties</Typography>
+          {/* Latest Properties section */}
+          <Typography fontSize={18} fontWeight={600} color="#11142D">
+            Latest Properties
+          </Typography>
 
           <Box mt={2.5} sx={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+            {/* Rendering each property card */}
             {latestProperties.map((property) => (
               <PropertyCard
                 key={property._id}
