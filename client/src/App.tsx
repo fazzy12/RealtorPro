@@ -35,6 +35,7 @@ import {
   EditProperty,
 } from 'pages';
 
+// Create an instance of Axios
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
   const token = localStorage.getItem('token');
@@ -50,21 +51,25 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 });
 
 const App = () => {
+  // Define the authProvider
   const authProvider: AuthProvider = {
     login: async ({ credential }: CredentialResponse) => {
       const profileObj = credential ? parseJwt(credential) : null;
 
       // Save user to MongoDB
       if (profileObj) {
-        const response = await fetch('https://yariga.up.railway.app/api/v1/users', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: profileObj.name,
-            email: profileObj.email,
-            avatar: profileObj.picture,
-          }),
-        });
+        const response = await fetch(
+          'https://yariga.up.railway.app/api/v1/users',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: profileObj.name,
+              email: profileObj.email,
+              avatar: profileObj.picture,
+            }),
+          },
+        );
 
         const data = await response.json();
         if (response.status === 200) {
@@ -173,4 +178,3 @@ const App = () => {
 };
 
 export default App;
-
