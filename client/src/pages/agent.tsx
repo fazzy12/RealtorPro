@@ -4,6 +4,7 @@ import { Box, Typography } from '@pankod/refine-mui';
 import { AgentCard } from 'components';
 
 const Agents = () => {
+  // Fetching the list of agents
   const { data, isLoading, isError } = useList({
     resource: 'users',
   });
@@ -20,7 +21,10 @@ const Agents = () => {
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142D">Agents List</Typography>
+      {/* Heading */}
+      <Typography fontSize={25} fontWeight={700} color="#11142D">
+        Agents List
+      </Typography>
 
       <Box
         mt="20px"
@@ -28,19 +32,21 @@ const Agents = () => {
           display: 'flex',
           flexWrap: 'wrap',
           gap: '20px',
-          backgroundColor: '#FCFCFC' }}
+          backgroundColor: '#FCFCFC',
+        }}
       >
+        {/* Rendering agent cards */}
         {allAgents.length > 0
-        && allAgents?.map((agent) => (
-          <AgentCard
-            key={agent._id}
-            id={agent._id}
-            name={agent.name}
-            email={agent.email}
-            avatar={agent.avatar}
-            noOfProperties={agent.allProperties.length}
-          />
-        ))}
+          && allAgents?.map((agent) => (
+            <AgentCard
+              key={agent._id}
+              id={agent._id}
+              name={agent.name}
+              email={agent.email}
+              avatar={agent.avatar}
+              noOfProperties={agent.allProperties.length}
+            />
+          ))}
       </Box>
     </Box>
   );
