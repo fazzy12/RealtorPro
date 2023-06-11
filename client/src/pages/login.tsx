@@ -15,6 +15,10 @@ export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
   // const { mutateAsync: create } = useCreate();
 
+  /**
+   * GoogleButton Component
+   * Renders a Google Sign-In button and handles the authentication process
+   */
   const GoogleButton = (): JSX.Element => {
     const divRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +30,7 @@ export const Login: React.FC = () => {
       try {
         window.google.accounts.id.initialize({
           ux_mode: 'popup',
-          client_id: 'GOOGLE_CLIENT_ID',
+          client_id: 'GOOGLE_CLIENT_ID', // TODO: Replace with actual client ID
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
@@ -90,3 +94,4 @@ export const Login: React.FC = () => {
     </Box>
   );
 };
+
