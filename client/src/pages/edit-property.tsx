@@ -4,10 +4,20 @@ import { FieldValues, useForm } from '@pankod/refine-react-hook-form';
 import Form from 'components/common/Form';
 
 const CreateProperty = () => {
+  // Get the authenticated user's identity
   const { data: user } = useGetIdentity();
-  const [propertyImage, setPropertyImage] = useState({ name: '', url: '' });
-  const { refineCore: { onFinish, formLoading }, register, handleSubmit } = useForm();
 
+  // State for property image
+  const [propertyImage, setPropertyImage] = useState({ name: '', url: '' });
+
+  // Form management using refine-react-hook-form
+  const {
+    refineCore: { onFinish, formLoading },
+    register,
+    handleSubmit,
+  } = useForm();
+
+  // Handle property image change
   const handleImageChange = (file: File) => {
     const reader = (readFile: File) => new Promise<string>((resolve, reject) => {
       const fileReader = new FileReader();
@@ -18,6 +28,7 @@ const CreateProperty = () => {
     reader(file).then((result: string) => setPropertyImage({ name: file?.name, url: result }));
   };
 
+  // Handle form submission
   const onFinishHandler = async (data: FieldValues) => {
     if (!propertyImage.name) return alert('Please upload a property image');
 
