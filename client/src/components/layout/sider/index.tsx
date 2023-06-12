@@ -1,17 +1,3 @@
-/* The Sider component has been refactored to enhance readability and maintainability. The changes include         organizing the   *  *  * imports, separating the component logic into smaller functions, and improving the structure of the code.
-
-* # Key changes:
-
-* 1. Imported components and hooks have been organized in separate blocks for better readability.
-* 2. The component logic has been split into smaller functions to improve code organization and reusability.
-* 3. The useEffect hook has been properly indented and placed inside the component.
-* 4. The renderTreeView function now has a more descriptive name and improved readability.
-* 5. The dashboard and logout menu items are conditionally rendered based on user authentication status and availability of the dashboard * resource.
-* 6. The renderSider function handles rendering the default structure or invoking a custom render function if provided.
-* 7. The JSX structure has been formatted and aligned properly to enhance readability.
-
-These changes aim to improve the codebase by enhancing readability, separating concerns, and promoting reusability.
-*/
 /* eslint-disable no-shadow */
 
 import React, { useState } from 'react';

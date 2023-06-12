@@ -5,16 +5,27 @@ import { Link } from '@pankod/refine-react-router-v6';
 
 import { AgentCardProp, InfoBarProps } from 'interfaces/agent';
 
+// Info bar component for displaying individual information in AgentCard
 const InfoBar = ({ icon, name }: InfoBarProps) => (
   <Stack flex={1} minWidth={{ xs: '100%', sm: 300 }} gap={1.5} direction="row">
     {icon}
-    <Typography fontSize={14} color="#808191">{name}</Typography>
+    <Typography fontSize={14} color="#808191">
+      {name}
+    </Typography>
   </Stack>
 );
 
-const AgentCard = ({ id, name, email, avatar, noOfProperties }: AgentCardProp) => {
+// Component for displaying an agent card with their details
+const AgentCard = ({
+  id,
+  name,
+  email,
+  avatar,
+  noOfProperties,
+}: AgentCardProp) => {
   const { data: currentUser } = useGetIdentity();
 
+  // Generate the appropriate link based on the current user and agent's email
   const generateLink = () => {
     if (currentUser.email === email) return '/my-profile';
     return `/agents/show/${id}`;
@@ -42,12 +53,27 @@ const AgentCard = ({ id, name, email, avatar, noOfProperties }: AgentCardProp) =
         height={90}
         style={{ borderRadius: 8, objectFit: 'cover' }}
       />
-      <Stack direction="column" justifyContent="space-between" flex={1} gap={{ xs: 4, sm: 2 }}>
+      <Stack
+        direction="column"
+        justifyContent="space-between"
+        flex={1}
+        gap={{ xs: 4, sm: 2 }}
+      >
         <Stack gap={2} direction="row" flexWrap="wrap" alignItems="center">
-          <Typography fontSize={22} fontWeight={600} color="#11142D">{name}</Typography>
-          <Typography fontSize={14} color="#808191">Real-Estate Agent</Typography>
+          <Typography fontSize={22} fontWeight={600} color="#11142D">
+            {name}
+          </Typography>
+          <Typography fontSize={14} color="#808191">
+            Real-Estate Agent
+          </Typography>
         </Stack>
-        <Stack direction="row" flexWrap="wrap" justifyContent="space-between" alignItems="center" gap={2}>
+        <Stack
+          direction="row"
+          flexWrap="wrap"
+          justifyContent="space-between"
+          alignItems="center"
+          gap={2}
+        >
           <InfoBar
             icon={<EmailOutlined sx={{ color: '#808191' }} />}
             name={email}
@@ -66,7 +92,6 @@ const AgentCard = ({ id, name, email, avatar, noOfProperties }: AgentCardProp) =
           />
         </Stack>
       </Stack>
-
     </Box>
   );
 };

@@ -8,13 +8,11 @@ import { CredentialResponse } from 'interfaces/google';
 // import { parseJwt } from 'utils/parse-jwt';
 import { yariga } from '../assets';
 
-const GOOGLE_CLIENT_ID =
-  '1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com';
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
   // const { mutateAsync: create } = useCreate();
-
   /**
    * GoogleButton Component
    * Renders a Google Sign-In button and handles the authentication process
@@ -30,7 +28,7 @@ export const Login: React.FC = () => {
       try {
         window.google.accounts.id.initialize({
           ux_mode: 'popup',
-          client_id: 'GOOGLE_CLIENT_ID', // TODO: Replace with actual client ID
+          client_id: GOOGLE_CLIENT_ID, // TODO: Replace with actual client ID
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
@@ -94,4 +92,3 @@ export const Login: React.FC = () => {
     </Box>
   );
 };
-
