@@ -3,7 +3,8 @@ import { Box, Typography, Stack } from '@pankod/refine-mui';
 
 import { PieChartProps } from 'interfaces/home';
 
-const PieChart = ({ title, value, series, colors } : PieChartProps) => (
+// Component for displaying a pie chart with title, value, and series data
+const PieChart = ({ title, value, series, colors }: PieChartProps) => (
   <Box
     id="chart"
     flex={1}
@@ -20,8 +21,12 @@ const PieChart = ({ title, value, series, colors } : PieChartProps) => (
     width="fit-content"
   >
     <Stack direction="column">
-      <Typography fontSize={14} color="#808191">{title}</Typography>
-      <Typography fontSize={24} color="#11142D" fontWeight={700} mt={1}>{value}</Typography>
+      <Typography fontSize={14} color="#808191">
+        {title}
+      </Typography>
+      <Typography fontSize={24} color="#11142D" fontWeight={700} mt={1}>
+        {value}
+      </Typography>
     </Stack>
 
     <ReactApexChart
@@ -43,4 +48,5 @@ const PieChart = ({ title, value, series, colors } : PieChartProps) => (
     />
   </Box>
 );
+
 export default PieChart;
