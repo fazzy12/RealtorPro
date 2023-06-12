@@ -1,16 +1,18 @@
 import { ApexOptions } from 'apexcharts';
 
+// Define the series data for the TotalRevenue component
 export const TotalRevenueSeries = [
   {
     name: 'Last Month',
-    data: [183, 124, 115, 85, 143, 143, 96],
+    data: [183, 124, 115, 85, 143, 143, 96], // Data for the "Last Month" series
   },
   {
     name: 'Running Month',
-    data: [95, 84, 72, 44, 108, 108, 47],
+    data: [95, 84, 72, 44, 108, 108, 47], // Data for the "Running Month" series
   },
 ];
 
+// Define the options for configuring the TotalRevenue component's bar chart
 export const TotalRevenueOptions: ApexOptions = {
   chart: {
     type: 'bar',
@@ -37,11 +39,11 @@ export const TotalRevenueOptions: ApexOptions = {
     width: 4,
   },
   xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // X-axis categories
   },
   yaxis: {
     title: {
-      text: '$ (thousands)',
+      text: '$ (thousands)', // Y-axis title
     },
   },
   fill: {
@@ -54,7 +56,7 @@ export const TotalRevenueOptions: ApexOptions = {
   tooltip: {
     y: {
       formatter(val: number) {
-        return `$ ${val} thousands`;
+        return `$ ${val} thousands`; // Format the tooltip value
       },
     },
   },
