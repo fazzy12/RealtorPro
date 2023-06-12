@@ -6,10 +6,21 @@ import { useNavigate } from '@pankod/refine-react-router-v6';
 
 const CreateProperty = () => {
   const navigate = useNavigate();
-  const { data: user } = useGetIdentity();
-  const [propertyImage, setPropertyImage] = useState({ name: '', url: '' });
-  const { refineCore: { onFinish, formLoading }, register, handleSubmit } = useForm();
 
+  // Get the authenticated user's identity
+  const { data: user } = useGetIdentity();
+
+  // State for property image
+  const [propertyImage, setPropertyImage] = useState({ name: '', url: '' });
+
+  // Form management using refine-react-hook-form
+  const {
+    refineCore: { onFinish, formLoading },
+    register,
+    handleSubmit,
+  } = useForm();
+
+  // Handle property image change
   const handleImageChange = (file: File) => {
     const reader = (readFile: File) => new Promise<string>((resolve, reject) => {
       const fileReader = new FileReader();
@@ -20,6 +31,7 @@ const CreateProperty = () => {
     reader(file).then((result: string) => setPropertyImage({ name: file?.name, url: result }));
   };
 
+  // Handle form submission
   const onFinishHandler = async (data: FieldValues) => {
     if (!propertyImage.name) return alert('Please upload a property image');
 
