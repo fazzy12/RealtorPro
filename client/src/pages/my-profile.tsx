@@ -3,12 +3,16 @@ import { useGetIdentity, useOne } from '@pankod/refine-core';
 import { Profile } from 'components';
 
 const MyProfile = () => {
+  // Get the authenticated user's identity
   const { data: user } = useGetIdentity();
+
+  // Fetch the user's profile data
   const { data, isLoading, isError } = useOne({
     resource: 'users',
     id: user?.userid,
   });
 
+  // Extract the user's profile from the fetched data
   const myProfile = data?.data ?? [];
 
   if (isLoading) {
@@ -19,6 +23,7 @@ const MyProfile = () => {
     return <div>Something went wrong!</div>;
   }
 
+  // Render the user's profile using the Profile component
   return (
     <Profile
       type="My"
