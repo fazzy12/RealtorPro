@@ -1,1 +1,1 @@
-# Refine - CRUD Real-estate Dashboard
+Link to the template files: https://github.com/tomitokko/django-social-media-template
